@@ -1,0 +1,68 @@
+<div class="student-container">
+  <h1>Quản lý danh sách sinh viên</h1>
+
+  <!-- Button to open the add student modal -->
+  <button class="add-button" (click)="openAddStudentModal()">Thêm mới sinh viên</button>
+
+  <!-- Table displaying students -->
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>STT</th>
+        <th>Mã sinh viên</th>
+        <th>Họ và tên</th>
+        <th>Lớp</th>
+        <th>Khoa</th>
+        <th>Trạng thái</th>
+        <th>Hành động</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let student of students; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ student.studentId }}</td>
+        <td>{{ student.name }}</td>
+        <td>{{ student.class }}</td>
+        <td>{{student.department}}</td>
+        <td>{{ student.status }}</td>
+        <td>
+          <button class="edit-button" (click)="openEditStudentModal(student)">Chỉnh sửa</button>
+          <button class="delete-button" (click)="deleteStudent(student)">Xóa</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Modal for adding or editing a student -->
+  <div *ngIf="isModalVisible" class="modal-overlay">
+    <div class="modal-content">
+      <h2>{{ isEditMode ? 'Chỉnh sửa thông tin sinh viên' : 'Thêm mới sinh viên' }}</h2>
+
+      <form [formGroup]="studentForm">
+        <label for="studentId">Mã sinh viên:</label>
+        <input id="studentId" formControlName="studentId" type="text" />
+
+        <label for="name">Họ và tên:</label>
+        <input id="name" formControlName="name" type="text" />
+
+        <label for="class">Lớp:</label>
+        <input id="class" formControlName="class" type="text" />
+
+        <label for="class">Khoa:</label>
+        <input id="class" formControlName="department" type="text" />
+
+        <label for="status">Trạng thái:</label>
+        <select id="status" formControlName="status">
+          <option value="Đang học">Đang học</option>
+          <option value="Tạm nghỉ">Tạm nghỉ</option>
+          <option value="Đã tốt nghiệp">Đã tốt nghiệp</option>
+        </select>
+      </form>
+
+      <div class="modal-actions">
+        <button (click)="saveStudent()">Lưu</button>
+        <button (click)="closeModal()">Hủy</button>
+      </div>
+    </div>
+  </div>
+</div>

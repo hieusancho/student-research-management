@@ -1,0 +1,174 @@
+<!-- <div class="home-wrapper">
+    <header class="home-header">
+      <h1>Hệ thống Quản lý Sinh viên</h1>
+      <p>Quản lý hiệu quả thông tin sinh viên, giảng viên và đề tài nghiên cứu</p>
+    </header>
+  
+    <section class="overview-section">
+      <h2>Tổng quan</h2>
+      <div class="stats-container">
+        <div class="stat-card">
+          <img src="assets/icons/students.png" alt="Sinh viên">
+          <h3>1,200</h3>
+          <p>Sinh viên</p>
+        </div>
+        <div class="stat-card">
+          <img src="assets/icons/lecturers.png" alt="Giảng viên">
+          <h3>150</h3>
+          <p>Giảng viên</p>
+        </div>
+        <div class="stat-card">
+          <img src="assets/icons/topics.png" alt="Đề tài">
+          <h3>500</h3>
+          <p>Đề tài</p>
+        </div>
+      </div>
+    </section>
+  
+    <section class="features-section">
+      <h2>Chức năng chính</h2>
+      <div class="features-grid">
+        <div class="feature">
+          <img src="assets/icons/student-management.png" alt="Quản lý Sinh viên">
+          <h3>Quản lý Sinh viên</h3>
+          <p>Thêm, sửa, xóa và xem thông tin chi tiết sinh viên.</p>
+          <button (click)="navigateTo('students')">Xem chi tiết</button>
+        </div>
+        <div class="feature">
+          <img src="assets/icons/lecturer-management.png" alt="Quản lý Giảng viên">
+          <h3>Quản lý Giảng viên</h3>
+          <p>Thêm, sửa, xóa và xem thông tin chi tiết giảng viên.</p>
+          <button (click)="navigateTo('lecturers')">Xem chi tiết</button>
+        </div>
+        <div class="feature">
+          <img src="assets/icons/topic-management.png" alt="Đăng ký Đề tài">
+          <h3>Đăng ký Đề tài</h3>
+          <p>Quản lý đề tài nghiên cứu và trạng thái phê duyệt.</p>
+          <button (click)="navigateTo('topics')">Xem chi tiết</button>
+        </div>
+        <div class="feature">
+          <img src="assets/icons/report-management.png" alt="Báo cáo">
+          <h3>Báo cáo</h3>
+          <p>Gửi báo cáo, kiểm tra trạng thái phê duyệt.</p>
+          <button (click)="navigateTo('reports')">Xem chi tiết</button>
+        </div>
+      </div>
+    </section>
+  
+    <footer class="home-footer">
+      <p>&copy; 2024 Hệ thống Quản lý Sinh viên. Mọi quyền được bảo lưu.</p>
+      
+    </footer>
+  </div> -->
+
+  <div class="home-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="logo">
+        <h2>GIAO DIỆN NGHIÊN CỨU</h2>
+        <p>Quản lý khoa học sinh viên</p>
+      </div>
+      <ul class="menu">
+        <li class="menu-item active">Tổng quan</li>
+        <li class="menu-item" [routerLink]="['/topic-list']" >Danh sách đề tài</li>
+        <li class="menu-item" [routerLink]="['/progress']">Quản lý tiến độ</li>
+        <li class="menu-item" [routerLink]="['/result']">Thống kê kết quả</li>
+        <li class="menu-item" [routerLink]="['/account']">Quản lý tài khoản</li>
+      </ul>
+    </aside>
+  
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Header -->
+      <header class="header">
+        <h1>QUẢN LÝ NGHIÊN CỨU KHOA HỌC SINH VIÊN</h1>
+        <div class="user-actions">
+          <span class="notifications" [routerLink]="['/notification']" >Thông báo</span>
+          <div class="user-info">
+            <p>Xin chào, Quản trị viên!</p>
+          </div>
+        </div>
+      </header>
+  
+      <!-- Dashboard -->
+      <section class="dashboard">
+        <!-- Overview -->
+        <div class="overview-cards">
+          <div class="card">
+            <h2 [routerLink]="['/topic-list']">Tổng số đề tài</h2>
+            <p>20</p>
+          </div>
+          <div class="card">
+            <h2>Số đề tài đã hoàn thành</h2>
+            <p>15</p>
+          </div>
+          <div class="card">
+            <h2 [routerLink]="['/lecturer']">Số giảng viên hướng dẫn</h2>
+            <p>15</p>
+          </div>
+          <div class="card">
+            <h2 [routerLink]="['/student']">Số sinh viên tham gia</h2>
+            <p>40</p>
+          </div>
+        </div>
+  
+        <!-- Details Section -->
+        <section class="details-section">
+          <h2>Thông tin chi tiết</h2>
+          <div class="info-cards">
+            <div class="info-item">
+              <h3 [routerLink]="['/outline']">Danh sách đề cương</h3>
+              <p>15</p>
+            </div>
+            <div class="info-item">
+              <h3>Đề tài nổi bật</h3>
+              <p>"Ứng dụng AI trong nông nghiệp thông minh"</p>
+            </div>
+            <div class="info-item">
+              <h3>Hạn báo cáo đề tài</h3>
+              <p>12/12/2024</p>
+            </div>
+          </div>
+        </section>
+  
+        <!-- Table Section -->
+        <section class="table-section">
+          <h2>Danh sách đề tài mới nhất</h2>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>STT</th>
+                <th>Tên đề tài</th>
+                <th>Sinh viên thực hiện</th>
+                <th>Giảng viên hướng dẫn</th>
+                <th>Trạng thái</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Ứng dụng AI trong y tế</td>
+                <td>Nguyễn Văn Hiếu</td>
+                <td>TS. Lê Văn Xuân</td>
+                <td>Đang thực hiện</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Phát triển phần mềm quản lý</td>
+                <td>Trần Thị Linh</td>
+                <td>PGS. Nguyễn Thành Huy</td>
+                <td>Hoàn thành</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Phân tích dữ liệu lớn</td>
+                <td>Lê Minh Khôi</td>
+                <td>TS. Phạm Văn Dũng</td>
+                <td>Chờ duyệt</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      </section>
+    </main>
+  </div>

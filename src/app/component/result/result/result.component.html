@@ -1,0 +1,56 @@
+<div class="result-container">
+    <h1>Quản lý Kết Quả</h1>
+  
+    <!-- Button to open the create result modal -->
+    <!-- <button class="add-button" (click)="openResultModal()">Tạo Kết Quả</button> -->
+  
+    <!-- Result list as a table -->
+    <table class="result-table">
+      <thead>
+        <tr>
+          <th>Mã Đề Tài</th>
+          <th>Mô Tả Kết Quả</th>
+          <th>Điểm Số</th>
+          <th>Nhận Xét</th>
+          <th>Hành Động</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let result of results">
+          <td>{{ result.topicCode }}</td>
+          <td>{{ result.description }}</td>
+          <td>{{ result.score }}</td>
+          <td>{{ result.feedback }}</td>
+          <td class="actions">
+            <button class="delete-button" (click)="deleteResult(result.id)">Xóa</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <!-- Modal for creating result -->
+    <div *ngIf="isModalVisible" class="modal-overlay">
+      <div class="modal-content">
+        <h2>Tạo Kết Quả Mới</h2>
+        <form [formGroup]="resultForm">
+          <label for="topicCode">Mã Đề Tài:</label>
+          <input id="topicCode" formControlName="topicCode" type="text" />
+  
+          <label for="description">Mô Tả Kết Quả:</label>
+          <textarea id="description" formControlName="description"></textarea>
+  
+          <label for="score">Điểm Số:</label>
+          <input id="score" formControlName="score" type="number" min="0" max="10" />
+  
+          <label for="feedback">Nhận Xét:</label>
+          <textarea id="feedback" formControlName="feedback"></textarea>
+  
+          <div class="modal-actions">
+            <button type="button" (click)="saveResult()">Lưu</button>
+            <button type="button" (click)="closeModal()">Hủy</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,53 @@
+<div class="notification-container">
+    <h1>Quản lý thông báo</h1>
+  
+    <!-- Button to open the create notification modal -->
+    <button class="add-button" (click)="openNotificationModal()">Tạo thông báo</button>
+  
+    <!-- Notification list -->
+    <div class="notification-list">
+      <div *ngFor="let notification of notifications" class="notification-item">
+        <div class="notification-header">
+          <span class="notification-title">{{ notification.title }}</span>
+          <span class="notification-time">{{ notification.time | date: 'dd/MM/yyyy HH:mm' }}</span>
+        </div>
+        <div class="notification-body">
+          <p class="notification-content">{{ notification.content }}</p>
+          <div class="notification-meta">
+            <span>Mã người nhận: {{ notification.receiverId }}</span>
+            <span>Mã người tạo: {{ notification.creatorId }}</span>
+          </div>
+        </div>
+
+        <div class="notification-actions">
+            <button class="delete-button" (click)="deleteNotification(notification.id)">Xóa</button>
+          </div>
+          
+      </div>
+    </div>
+  
+    <!-- Modal for creating a notification -->
+    <div *ngIf="isModalVisible" class="modal-overlay">
+      <div class="modal-content">
+        <h2>Tạo thông báo mới</h2>
+        <form [formGroup]="notificationForm">
+          <label for="title">Tiêu đề:</label>
+          <input id="title" formControlName="title" type="text" />
+  
+          <label for="content">Nội dung:</label>
+          <textarea id="content" formControlName="content"></textarea>
+  
+          <label for="receiverId">Mã người nhận:</label>
+          <input id="receiverId" formControlName="receiverId" type="text" />
+  
+          <label for="creatorId">Mã người tạo:</label>
+          <input id="creatorId" formControlName="creatorId" type="text" />
+  
+          <div class="modal-actions">
+            <button (click)="saveNotification()">Lưu</button>
+            <button (click)="closeModal()">Hủy</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

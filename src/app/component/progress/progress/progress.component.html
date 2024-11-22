@@ -1,0 +1,68 @@
+<div class="progress-container">
+    <h1>Quản lý Tiến Độ</h1>
+  
+    <!-- Button to open the create progress modal -->
+    <button class="add-button" (click)="openProgressModal()">Tạo Tiến Độ</button>
+  
+    <!-- Progress list as a table -->
+    <table class="progress-table">
+      <thead>
+        <tr>
+          <th>Mã Tiến Độ</th>
+          <th>Mã Đề Tài</th>
+          <th>Thời Gian Bắt Đầu</th>
+          <th>Thời Gian Kết Thúc</th>
+          <th>Nội Dung Báo Cáo</th>
+          <th>Trạng Thái</th>
+          <th>Hành Động</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let progress of progresses">
+          <td>{{ progress.progressCode }}</td>
+          <td>{{ progress.topicCode }}</td>
+          <td>{{ progress.startTime | date }}</td>
+          <td>{{ progress.endTime | date }}</td>
+          <td>{{ progress.reportContent }}</td>
+          <td>{{ progress.status }}</td>
+          <td class="actions">
+            <button class="delete-button" (click)="deleteProgress(progress.id)">Xóa</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <!-- Modal for creating progress -->
+    <div *ngIf="isModalVisible" class="modal-overlay">
+      <div class="modal-content">
+        <h2>Tạo Tiến Độ Mới</h2>
+        <form [formGroup]="progressForm">
+          <label for="progressCode">Mã Tiến Độ:</label>
+          <input id="progressCode" formControlName="progressCode" type="text" />
+  
+          <label for="topicCode">Mã Đề Tài:</label>
+          <input id="topicCode" formControlName="topicCode" type="text" />
+  
+          <label for="startTime">Thời Gian Bắt Đầu:</label>
+          <input id="startTime" formControlName="startTime" type="date" />
+  
+          <label for="endTime">Thời Gian Kết Thúc:</label>
+          <input id="endTime" formControlName="endTime" type="date" />
+  
+          <label for="reportContent">Nội Dung Báo Cáo:</label>
+          <textarea id="reportContent" formControlName="reportContent"></textarea>
+  
+          <label for="status">Trạng Thái:</label>
+          <select id="status" formControlName="status">
+            <option value="Đang thực hiện">Đang thực hiện</option>
+            <option value="Hoàn thành">Hoàn thành</option>
+          </select>
+  
+          <div class="modal-actions">
+            <button type="button" (click)="saveProgress()">Lưu</button>
+            <button type="button" (click)="closeModal()">Hủy</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

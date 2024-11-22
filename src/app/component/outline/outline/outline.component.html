@@ -1,0 +1,65 @@
+<div class="outline-container">
+    <h1>Quản lý đề cương</h1>
+  
+    <!-- Button to open the create or edit outline modal -->
+    <button class="add-button" (click)="openOutlineModal()">Tạo đề cương</button>
+  
+    <!-- Outline list as a table -->
+    <table class="outline-table">
+      <thead>
+        <tr>
+          <th>Mã đề cương</th>
+          <th>Mã đề tài</th>
+          <th>Nội dung</th>
+          <th>Ngày nộp</th>
+          <th>Trạng thái</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let outline of outlines">
+          <td>{{ outline.outlineCode }}</td>
+          <td>{{ outline.topicCode }}</td>
+          <td>{{ outline.content }}</td>
+          <td>{{ outline.dueDate | date }}</td>
+          <td>{{ outline.status }}</td>
+          <td class="actions">
+            <button class="edit-button" (click)="openOutlineModal(outline)">Chỉnh sửa</button>
+            <button class="delete-button" (click)="deleteOutline(outline.id)">Xóa</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <!-- Modal for creating/editing an outline -->
+    <div *ngIf="isModalVisible" class="modal-overlay">
+      <div class="modal-content">
+        <h2>{{ editingOutline ? 'Chỉnh sửa đề cương' : 'Tạo đề cương mới' }}</h2>
+        <form [formGroup]="outlineForm">
+          <label for="outlineCode">Mã đề cương:</label>
+          <input id="outlineCode" formControlName="outlineCode" type="text" />
+  
+          <label for="topicCode">Mã đề tài:</label>
+          <input id="topicCode" formControlName="topicCode" type="text" />
+  
+          <label for="content">Nội dung:</label>
+          <textarea id="content" formControlName="content"></textarea>
+  
+          <label for="dueDate">Ngày nộp:</label>
+          <input id="dueDate" formControlName="dueDate" type="date" />
+  
+          <label for="status">Trạng thái:</label>
+          <select id="status" formControlName="status">
+            <option value="Chưa nộp">Chưa nộp</option>
+            <option value="Đã nộp">Đã nộp</option>
+            <option value="Đã duyệt">Đã duyệt</option>
+          </select>
+  
+          <div class="modal-actions">
+            <button type="button" (click)="saveOutline()">Lưu</button>
+            <button type="button" (click)="closeModal()">Hủy</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

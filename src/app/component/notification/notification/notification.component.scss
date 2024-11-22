@@ -1,0 +1,154 @@
+.notification-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .notification-container h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .add-button {
+    background: #22a95f;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .add-button:hover {
+    background: #1e904f;
+  }
+  
+  .notification-list {
+    margin-top: 20px;
+  }
+  
+  .notification-item {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+  }
+  
+  .notification-header {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+  }
+  
+  .notification-title {
+    font-size: 18px;
+  }
+  
+  .notification-time {
+    font-size: 14px;
+    color: #888;
+  }
+  
+  .notification-body {
+    margin-top: 10px;
+  }
+  
+  .notification-content {
+    margin: 5px 0;
+  }
+  
+  .notification-meta {
+    font-size: 12px;
+    color: #666;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  /* Modal styling */
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 400px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .modal-content h2 {
+    margin-bottom: 20px;
+  }
+  
+  .modal-content label {
+    display: block;
+    margin: 10px 0 5px;
+  }
+  
+  .modal-content input,
+  .modal-content textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .modal-actions {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .modal-actions button {
+    padding: 10px 15px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .modal-actions button:first-child {
+    background: #22a95f;
+    color: white;
+  }
+  
+  .modal-actions button:last-child {
+    background: #e74c3c;
+    color: white;
+  }
+  
+  .modal-actions button:first-child:hover {
+    background: #1e904f;
+  }
+  
+  .modal-actions button:last-child:hover {
+    background: #c0392b;
+  }
+
+  .notification-actions {
+    text-align: right;
+    margin-top: 10px;
+  }
+  
+  .delete-button {
+    background: #e74c3c;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .delete-button:hover {
+    background: #c0392b;
+  }

@@ -1,0 +1,56 @@
+<!-- <h2>Đăng nhập</h2>
+<form (ngSubmit)="onLogin()">
+  <div>
+    <label for="username">Tài khoản</label>
+    <input type="text" id="username" [(ngModel)]="username" name="username" required>
+  </div>
+  <div>
+    <label for="password">Mật khẩu</label>
+    <input type="password" id="password" [(ngModel)]="password" name="password" required>
+  </div>
+  <button type="submit">Đăng nhập</button>
+</form> -->
+
+<div class="login-container">
+  <div class="login-box">
+    <h2>Đăng nhập</h2>
+    <form (ngSubmit)="onLogin()">
+      <div class="form-group">
+        <label for="username">Tên đăng nhập</label>
+        <input
+          type="text"
+          id="username"
+          [(ngModel)]="username"
+          name="username"
+          placeholder="Nhập tên đăng nhập"
+          required
+        />
+      </div>
+      <div class="form-group password-group">
+        <label for="password">Mật khẩu</label>
+        <input
+          type="password"
+          id="password"
+          [(ngModel)]="password"
+          name="password"
+          placeholder="Nhập mật khẩu"
+          required
+        />
+        <!-- <i class="password-toggle" (click)="togglePasswordVisibility()">
+          <img [src]="isPasswordVisible ? 'assets/eye-open.svg' : 'assets/eye-closed.svg'" alt="Toggle visibility" />
+        </i> -->
+      </div>
+      <div class="form-options">
+        <label>
+          <input type="checkbox" [(ngModel)]="rememberMe" name="rememberMe" />
+          Nhớ tài khoản
+        </label>
+        <a href="#" class="forgot-password">Quên mật khẩu?</a>
+      </div>
+      <button type="submit" class="btn-login">Đăng nhập</button>
+      <p class="signup-link">
+        Chưa có tài khoản? <a routerLink="/signup">Đăng ký</a>
+      </p>
+    </form>
+  </div>
+</div>

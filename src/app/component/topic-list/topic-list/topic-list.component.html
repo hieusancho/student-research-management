@@ -1,0 +1,93 @@
+<!-- <div class="topic-list-container">
+    <h1>Danh sách đề tài</h1>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>STT</th>
+          <th>Tên đề tài</th>
+          <th>Sinh viên thực hiện</th>
+          <th>Giảng viên hướng dẫn</th>
+          <th>Trạng thái</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let topic of topics; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ topic.name }}</td>
+          <td>{{ topic.student }}</td>
+          <td>{{ topic.teacher }}</td>
+          <td>{{ topic.status }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div> -->
+
+  <div class="topic-list-container">
+    <h1>Quản lý danh sách đề tài</h1>
+  
+    <!-- Button to open the add topic modal -->
+    <button class="add-button" (click)="openAddTopicModal()">Thêm mới đề tài</button>
+  
+    <!-- Table displaying topics -->
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>STT</th>
+          <th>Mã đề tài</th>
+          <th>Tên đề tài</th>
+          <th>Sinh viên thực hiện</th>
+          <th>Giảng viên hướng dẫn</th>
+          <th>Trạng thái</th>
+          <th>Hành động</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let topic of topics; let i = index">
+
+          <td>{{ i + 1 }}</td>
+          <td>{{topic.topicCode}}</td>
+          <td>{{ topic.name }}</td>
+          <td>{{ topic.student }}</td>
+          <td>{{ topic.teacher }}</td>
+          <td>{{ topic.status }}</td>
+          <td>
+            <button class="edit-button" (click)="openEditTopicModal(topic)">Chỉnh sửa</button>
+            <button class="delete-button" (click)="deleteTopic(topic)">Xóa</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <!-- Modal for adding or editing a topic -->
+    <div *ngIf="isModalVisible" class="modal-overlay">
+      <div class="modal-content">
+        <h2>{{ isEditMode ? 'Chỉnh sửa đề tài' : 'Thêm mới đề tài' }}</h2>
+  
+        <form [formGroup]="topicForm">
+          <label for="name">Mã đề tài:</label>
+          <input id="name" formControlName="topicCode" type="text" />
+
+          <label for="name">Tên đề tài:</label>
+          <input id="name" formControlName="name" type="text" />
+  
+          <label for="student">Sinh viên thực hiện:</label>
+          <input id="student" formControlName="student" type="text" />
+  
+          <label for="teacher">Giảng viên hướng dẫn:</label>
+          <input id="teacher" formControlName="teacher" type="text" />
+  
+          <label for="status">Trạng thái:</label>
+          <select id="status" formControlName="status">
+            <option value="Đang thực hiện">Đang thực hiện</option>
+            <option value="Hoàn thành">Hoàn thành</option>
+            <option value="Chờ duyệt">Chờ duyệt</option>
+          </select>
+        </form>
+  
+        <div class="modal-actions">
+          <button (click)="saveTopic()">Lưu</button>
+          <button (click)="closeModal()">Hủy</button>
+        </div>
+      </div>
+    </div>
+  </div>

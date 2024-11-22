@@ -1,0 +1,81 @@
+<div class="account-container">
+    <h1>Quản lý tài khoản</h1>
+  
+    <!-- Button to open the create or edit account modal -->
+    <button class="add-button" (click)="openAccountModal()">Tạo tài khoản</button>
+  
+    <!-- Account list as a table -->
+    <table class="account-table">
+      <thead>
+        <tr>
+          <th>Mã tài khoản</th>
+          <th>Tên tài khoản</th>
+          <th>Giới tính</th>
+          <th>Ngày sinh</th>
+          <th>Email</th>
+          <th>Số điện thoại</th>
+          <th>Quyền</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let account of accounts">
+          <td>{{ account.username }}</td>
+          <td>{{ account.fullName }}</td>
+          <td>{{ account.gender }}</td>
+          <td>{{ account.birthDate }}</td>
+          <td>{{ account.email }}</td>
+          <td>{{ account.phone }}</td>
+          <td>{{ account.role }}</td>
+          <td class="actions">
+            <button class="edit-button" (click)="openAccountModal(account)">Chỉnh sửa</button>
+            <button class="delete-button" (click)="deleteAccount(account.id)">Xóa</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <!-- Modal for creating/editing an account -->
+    <div *ngIf="isModalVisible" class="modal-overlay">
+      <div class="modal-content">
+        <h2>{{ editingAccount ? 'Chỉnh sửa tài khoản' : 'Tạo tài khoản mới' }}</h2>
+        <form [formGroup]="accountForm">
+          <label for="username">Mã tài khoản:</label>
+          <input id="username" formControlName="username" type="text" />
+  
+          <label for="fullName">Tên tài khoản:</label>
+          <input id="fullName" formControlName="fullName" type="text" />
+  
+          <label for="gender">Giới tính:</label>
+          <select id="gender" formControlName="gender">
+            <option value="Nam">Nam</option>
+            <option value="Nữ">Nữ</option>
+          </select>
+  
+          <label for="birthDate">Ngày sinh:</label>
+          <input id="birthDate" formControlName="birthDate" type="date" />
+  
+          <label for="email">Email:</label>
+          <input id="email" formControlName="email" type="email" />
+  
+          <label for="phone">Số điện thoại:</label>
+          <input id="phone" formControlName="phone" type="text" />
+  
+          <label for="password">Mật khẩu:</label>
+          <input id="password" formControlName="password" type="password" />
+  
+          <label for="role">Quyền:</label>
+          <select id="role" formControlName="role">
+            <option value="Sinh viên">Sinh viên</option>
+            <option value="Giảng viên">Giảng viên</option>
+            <option value="Admin">Admin</option>
+          </select>
+  
+          <div class="modal-actions">
+            <button (click)="saveAccount()">Lưu</button>
+            <button (click)="closeModal()">Hủy</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,63 @@
+<div class="lecturer-container">
+  <h1>Quản lý danh sách giảng viên</h1>
+
+  <!-- Button to open the add lecturer modal -->
+  <button class="add-button" (click)="openAddLecturerModal()">Thêm mới giảng viên</button>
+
+  <!-- Table displaying lecturers -->
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>STT</th>
+        <th>Mã giảng viên</th>
+        <th>Họ và tên</th>
+        <th>Khoa</th>
+        <th>Học vị</th>
+        <th>Hành động</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let lecturer of lecturers; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ lecturer.lecturerId }}</td>
+        <td>{{ lecturer.name }}</td>
+        <td>{{ lecturer.department }}</td>
+        <td>{{ lecturer.degree }}</td>
+        <td>
+          <button class="edit-button" (click)="openEditLecturerModal(lecturer)">Chỉnh sửa</button>
+          <button class="delete-button" (click)="deleteLecturer(lecturer)">Xóa</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Modal for adding or editing a lecturer -->
+  <div *ngIf="isModalVisible" class="modal-overlay">
+    <div class="modal-content">
+      <h2>{{ isEditMode ? 'Chỉnh sửa thông tin giảng viên' : 'Thêm mới giảng viên' }}</h2>
+
+      <form [formGroup]="lecturerForm">
+        <label for="lecturerId">Mã giảng viên:</label>
+        <input id="lecturerId" formControlName="lecturerId" type="text" />
+
+        <label for="name">Họ và tên:</label>
+        <input id="name" formControlName="name" type="text" />
+
+        <label for="department">Bộ môn:</label>
+        <input id="department" formControlName="department" type="text" />
+
+        <label for="status">Học vị:</label>
+        <select id="status" formControlName="status">
+          <option value="Đang công tác">Thạc sĩ</option>
+          <option value="Tạm nghỉ">Tiến sĩ</option>
+          
+        </select>
+      </form>
+
+      <div class="modal-actions">
+        <button (click)="saveLecturer()">Lưu</button>
+        <button (click)="closeModal()">Hủy</button>
+      </div>
+    </div>
+  </div>
+</div>
