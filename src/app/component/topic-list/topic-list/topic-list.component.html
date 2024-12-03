@@ -35,7 +35,8 @@
           <th>STT</th>
           <th>Mã đề tài</th>
           <th>Tên đề tài</th>
-          <th>Sinh viên thực hiện</th>
+          <th>Trưởng nhóm</th>
+          <th>Thành viên</th>
           <th>Giảng viên hướng dẫn</th>
           <th>Trạng thái</th>
           <th>Hành động</th>
@@ -47,11 +48,13 @@
           <td>{{ i + 1 }}</td>
           <td>{{topic.topicCode}}</td>
           <td>{{ topic.name }}</td>
+          <td>{{ topic.leader }}</td>
           <td>{{ topic.student }}</td>
           <td>{{ topic.teacher }}</td>
           <td>{{ topic.status }}</td>
           <td>
             <button class="edit-button" (click)="openEditTopicModal(topic)">Chỉnh sửa</button>
+            <br>
             <button class="delete-button" (click)="deleteTopic(topic)">Xóa</button>
           </td>
         </tr>
@@ -69,8 +72,11 @@
 
           <label for="name">Tên đề tài:</label>
           <input id="name" formControlName="name" type="text" />
+
+          <label for="student">Trưởng nhóm:</label>
+          <input id="student" formControlName="leader" type="text" />
   
-          <label for="student">Sinh viên thực hiện:</label>
+          <label for="student">Thành viên thực hiện:</label>
           <input id="student" formControlName="student" type="text" />
   
           <label for="teacher">Giảng viên hướng dẫn:</label>

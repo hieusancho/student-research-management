@@ -1,0 +1,42 @@
+<div class="registration-container">
+    <h1>Đăng ký đề tài</h1>
+  
+    <!-- Table displaying topics -->
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>STT</th>
+          <th>Mã đề tài</th>
+          <th>Tên đề tài</th>
+          <th>Giảng viên hướng dẫn</th>
+          <th>Trạng thái</th>
+          <th>Hành động</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let topic of topics; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ topic.topicCode }}</td>
+        <td>{{ topic.name }}</td>
+        <td>{{ topic.teacher }}</td>
+        <td>{{ topic.status }}</td>
+        <td>
+
+          <!-- (click)="registerTopic(topic)" -->
+          <button 
+            class="register-button" 
+            [disabled]="topic.status !== 'Chưa đăng ký'" 
+            
+            >
+            Đăng ký
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Confirmation message -->
+  <div *ngIf="successMessage" class="success-message">
+    {{ successMessage }}
+  </div>
+</div>

@@ -1,0 +1,62 @@
+<div class="council-container">
+    <h1>Quản lý hội đồng</h1>
+  
+    <!-- Button to open modal for adding/editing a council -->
+    <button class="add-button" (click)="openAddCouncilModal()">Thêm hội đồng mới</button>
+  
+    <!-- Table displaying councils -->
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>STT</th>
+          <th>Mã hội đồng</th>
+          <th>Tên hội đồng</th>
+          <th>Đề tài</th>
+          <th>Thành viên</th>
+          <th>Hành động</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr *ngFor="let council of councils; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ council.councilCode }}</td>
+            <td>{{ council.name }}</td>
+            <td>{{ council.topicName }}</td>
+            <td>{{ council.members }}</td>
+            <td>
+              <button class="edit-button" (click)="openEditCouncilModal(council)">Chỉnh sửa</button>
+              <!-- <button class="delete-button" (click)="deleteCouncil(council)">Xóa</button> -->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+       <!-- Modal for adding/editing a council -->
+  <div *ngIf="isModalVisible" class="modal-overlay">
+    <div class="modal-content">
+      <h2>{{ isEditMode ? 'Chỉnh sửa hội đồng' : 'Thêm hội đồng mới' }}</h2>
+
+      <form [formGroup]="councilForm">
+        <label for="councilCode">Mã hội đồng:</label>
+        <input id="councilCode" formControlName="councilCode" type="text" />
+
+        <label for="name">Tên hội đồng:</label>
+        <input id="name" formControlName="name" type="text" />
+
+        <label for="topic">Đề tài:</label>
+        <select id="topic" formControlName="topicId">
+          <option *ngFor="let topic of topics" [value]="topic.id">{{ topic.name }}</option>
+        </select>
+
+        <label for="members">Thành viên:</label>
+        <input id="members" formControlName="members" type="text" />
+      </form>
+
+      <div class="modal-actions">
+        <button (click)="saveCouncil()">Lưu</button>
+        <button (click)="closeModal()">Hủy</button>
+      </div>
+    </div>
+  </div>
+</div>

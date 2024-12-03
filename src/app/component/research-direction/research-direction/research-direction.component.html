@@ -1,0 +1,56 @@
+<div class="guidance-container">
+    <h1>Quản lý Hướng Nghiên Cứu</h1>
+  
+    <!-- Nút thêm mới -->
+    <button (click)="openModal()">Thêm mới Hướng Nghiên Cứu</button>
+  
+    <!-- Bảng dữ liệu -->
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>STT</th>
+          <th>Mã Hướng</th>
+          <th>Tên Hướng</th>
+          <th>Mô Tả</th>
+          <th>Mã Giảng Viên</th>
+          <th>Hành động</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let guidance of guidances; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ guidance.id }}</td>
+          <td>{{ guidance.name }}</td>
+          <td>{{ guidance.description }}</td>
+          <td>{{ guidance.teacherId }}</td>
+          <td>
+            <button (click)="editGuidance(guidance)">Sửa</button>
+            <button (click)="deleteGuidance(guidance.id)">Xóa</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <!-- Form Thêm/Sửa -->
+    <div *ngIf="isModalVisible" class="modal-overlay">
+      <div class="modal-content">
+        <h2>{{ isEditMode ? 'Chỉnh sửa Hướng Nghiên Cứu' : 'Thêm mới Hướng Nghiên Cứu' }}</h2>
+  
+        <form [formGroup]="guidanceForm">
+          <label for="name">Tên Hướng:</label>
+          <input id="name" formControlName="name" type="text" />
+  
+          <label for="description">Mô Tả:</label>
+          <textarea id="description" formControlName="description"></textarea>
+  
+          <label for="teacherId">Mã Giảng Viên:</label>
+          <input id="teacherId" formControlName="teacherId" type="text" />
+        </form>
+  
+        <div class="modal-actions">
+          <button (click)="saveGuidance()">Lưu</button>
+          <button (click)="closeModal()">Hủy</button>
+        </div>
+      </div>
+    </div>
+  </div>

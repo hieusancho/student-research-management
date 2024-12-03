@@ -18,6 +18,9 @@ import { ResultComponent } from './component/result/result/result.component';
 import { ProgressComponent } from './component/progress/progress/progress.component';
 import { NotificationComponent } from './component/notification/notification/notification.component';
 import { OutlineComponent } from './component/outline/outline/outline.component';
+import { TopicRegistrationComponent } from './component/topic-registration/topic-registration/topic-registration.component';
+import { CouncilComponent } from './component/council/council/council.component';
+import { ResearchDirectionComponent } from './component/research-direction/research-direction/research-direction.component';
 
 
 
@@ -34,7 +37,10 @@ import { OutlineComponent } from './component/outline/outline/outline.component'
     ResultComponent,
     ProgressComponent,
     NotificationComponent,
-    OutlineComponent
+    OutlineComponent,
+    TopicRegistrationComponent,
+    CouncilComponent,
+    ResearchDirectionComponent
   ],
   imports: [
     BrowserModule,
